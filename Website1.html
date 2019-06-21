@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width:device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="responsiveslides.min.js"></script>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+
+            /*.header img{
+                float: left;
+                width: 150px;
+                height: 150px;
+            }
+            .header h1{
+                text-align: center;
+                align-items: center;
+                padding: 40px;
+            }*/
+            .header {
+                display: flex;
+                padding: 20px;
+                text-align: center;
+                background: #1abc9c;
+                color: white;
+                margin: 0;
+            }
+            .header img{
+                float: left;
+                width: 150px;
+                height: 100px;
+            }
+            .header h1{
+                text-align: center;
+                position: relative;
+            }
+            .navbar{
+                display: flex;
+                flex-wrap: wrap;
+                background: black; 
+            }
+            .navbar a{
+                color: white;
+                padding: 14px 20px;
+                text-decoration: none;
+                text-align: center;
+            }
+            .navbar a:hover{
+                background: #aaa;
+                color: black
+            }
+            .fakeimg{
+                background-color: #aaa;
+                width: 100%;
+            }
+            .row{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .column1{
+                flex: 30%;
+                background-color: #f1f1f1;
+                padding: 20px
+            }
+            .column2{
+                flex: 70%;
+                padding: 20px;
+            }
+            .footer{
+                text-align: center;
+                background: #ddd;
+                padding: 20px;
+            }
+            @media screen and (max-width: 600px){
+                .navbar{
+                    flex-direction: column;
+                }
+            }
+            .imgslider{
+                position: relative;
+                list-style: none;
+                overflow: hidden;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            .imgslider li{
+                -webkit-backface-visibility: hidden;
+                position: absolute;
+                display: none;
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+            .imgslider li:first-child {
+                position: relative;
+                display: block;
+                float: left;
+            }
+            .imgslider img {
+                display: block;
+                height: auto;
+                float: left;
+                width: 100%;
+                border: 0;
+        }
+        </style>
+    </head>
+    <body>
+        <!--Header-->
+        <div class="header">
+            <img src="img/CompanyLogo.jpg" alt="My Company Logo">
+            <h1>My Company Name</h1>
+        </div>
+
+        <!--Navigation bar-->
+        <div class="navbar">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Information</a>
+            <a href="#">More</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <!--Image slider-->
+        <ul class="imgslider">
+            <li><img src="img/2.jpg" alt="Image1"></li>
+            <li><img src="img/2.jpg" alt="Image2"></li>
+            <li><img src="img/3.jpg" alt="Image3"></li>
+        </ul>
+
+        <!--Grid content-->
+        <div class="row">
+            <div class="column1">
+                <h2>About company</h2>
+                <h5>Photo of Company:</h5>
+                <div class="fakeimg" style="height:200px">Image</div>
+                <p>Some text here dfjgn dfioh tyhomop efnvion rgmkkopk rgnop...</p>
+                <h3>More text</h3>
+                <p>Ophdfio wefhoi wefjp</p>
+                <div class="fakeimg" style="height: 60px">Image</div><br>
+                <div class="fakeimg" style="height: 60px">Image</div><br>
+                <div class="fakeimg" style="height: 60px">Image</div>
+            </div>
+            <div class="column2">
+                <h2>Title header</h2>
+                <h5>Title description, </h5>
+                <div class="fakeimg" style="height: 200px">Image</div>
+                <p>Some text: hhdsio wefhjo0i gtoj9of efjhoij dfjioj</p>
+                <h2>Title header 2</h2>
+                <h5>Title description 2, </h5>
+                <div class="fakeimg" style="height: 200px">Image</div>
+                <p>Some text: hhdsio wefhjo0i gtoj9of efjhoij dfjioj</p>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div class="footer">
+                <h2>Footer</h2>
+        </div>
+        <script>
+            $(function() {
+                $(".imgslider").responsiveSlides();
+            });
+
+            $(".imgslider").responsiveSlides({
+                auto: false,             // Boolean: Animate automatically, true or false
+                speed: 500,            // Integer: Speed of the transition, in milliseconds
+                timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+                pager: true,           // Boolean: Show pager, true or false
+                nav: false,             // Boolean: Show navigation, true or false
+                random: false,          // Boolean: Randomize the order of the slides, true or false
+                pause: false,           // Boolean: Pause on hover, true or false
+                pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+                prevText: "Previous",   // String: Text for the "previous" button
+                nextText: "Next",       // String: Text for the "next" button
+                maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+                navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+                manualControls: "",     // Selector: Declare custom pager navigation
+                namespace: "imgslider",   // String: Change the default namespace used
+                before: function(){},   // Function: Before callback
+                after: function(){}     // Function: After callback
+            });
+        </script>
+    </body>
+</html>
