@@ -39,7 +39,8 @@ function myFunction() {
             //console.log(finalData);
             //console.log(response.items[0].branches_url.indexOf('{'));
 
-            fetch(response.items[0].owner.url)
+            var request1 =
+                fetch(response.items[0].owner.url)
                 .then(response => response.json())
                 .then(response => {
                     finalData.owner.login = response.login;
@@ -47,15 +48,25 @@ function myFunction() {
                     finalData.owner.followersCount = response.followers;
                     finalData.owner.followingCount = response.following;
                     //console.log(finalData);
-                })
+                });
+            
+        
+        
                 
-            fetch(response.items[0].branches_url.substring(0, response.items[0].branches_url.indexOf("{")))
+            var request2 = 
+                fetch(response.items[0].branches_url.substring(0, response.items[0].branches_url.indexOf("{")))
                 .then(response => response.json())
                 .then(response => {
-                    finalData.numberOfBranch = response.length;
-                    console.log(response);
-                    console.log(finalData);
-                })
+                    finalData.numberOfBranch = response.length;    
+                });
+         
+
+            Promise.all([request1, request2]).then(response => {
+                console.log(response);
+                console.log(finalData);
+            })
             
+        }).catch(err => {
+            console.log("Error: ", err)
         });
 }
